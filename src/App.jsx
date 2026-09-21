@@ -42,15 +42,16 @@ const Content = (props) => {
 console.log(props)
   return (
     <div className="">
-        <Parts subject={props.subject[0].name} units={props.subject[0].unitCount}/>
-        <Parts subject={props.subject[1].name} units={props.subject[1].unitCount}/>
-        <Parts subject={props.subject[2].name} units={props.subject[2].unitCount}/>
+        <Parts subject={props.course.subjects[0].name} units={props.course.subjects[0].unitCount}/>
+        <Parts subject={props.course.subjects[1].name} units={props.course.subjects[1].unitCount}/>
+        <Parts subject={props.course.subjects[2].name} units={props.course.subjects[2].unitCount}/>
     </div>
   )
 }
 const App = () => {
-  const course = 'Information Technology'
-  const subjects = [
+  const course = {
+    name: 'Information Technology',
+    subjects: [
     {
       name: 'CSIT340-Industry Elective 1',
       unitCount: 3
@@ -64,15 +65,13 @@ const App = () => {
       unitCount: 3
     }
   ]
+  }
 
   return (
     <>
-      <Header course={course}/>
-      {/* <Content subject1={subjects[0].name} units1={subjects[0].unitCount}
-               subject2={subjects[1].name} units2={subjects[1].unitCount}
-               subject3={subjects[2].name} units3={subjects[2].unitCount}/> */}
-      <Content subject = {subjects}/>
-      <Total units1={subjects[0].unitCount} units2={subjects[1].unitCount} units3={subjects[2].unitCount}/>
+      <Header course={course.name}/>
+      <Content course = {course}/>
+      <Total units1={course.subjects[0].unitCount} units2={course.subjects[1].unitCount} units3={course.subjects[2].unitCount}/>
     </>
   )
 }
