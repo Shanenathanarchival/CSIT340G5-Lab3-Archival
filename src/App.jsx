@@ -1,7 +1,7 @@
 import './App.css'
 
 const Header = (props) => {
-
+console.log(props)
   console.log(props)
   return (
     <div>
@@ -13,7 +13,7 @@ const Header = (props) => {
 }
 
 const Total = (props) => {
-
+console.log(props)
   return (
     <div className="total-box">
       <p className="total-label">Total Units</p>
@@ -25,21 +25,21 @@ const Total = (props) => {
 }
 
 const Parts = (props) => {
-
+console.log(props)
   return (
     <div>
-      <p className="subject-row">
+      <div className="subject-row">
         Subject: {props.subject}
         <p className="subject-badge">
         Units: {props.units}
         </p>
-      </p>
+      </div>
     </div>
   )
 }
 
 const Content = (props) => {
-
+console.log(props)
   return (
     <div className="">
         <Parts subject={props.subject1} units={props.units1}/>
@@ -50,20 +50,26 @@ const Content = (props) => {
 }
 const App = () => {
   const course = 'Information Technology'
-  const subject1 = 'CSIT340-Industry Elective 1'
-  const unitCount1 = 3
-  const subject2 = 'FL033-Nihongo 1'
-  const unitCount2 = 3
-  const subject3 = 'CSIT342-Industry Elective 3'
-  const unitCount3 = 3
+  const subject1 = {
+    name: 'CSIT340-Industry Elective 1',
+    unitCount: 3
+  }
+  const subject2 = {
+    name: 'FL033-Nihongo 1',
+    unitCount: 3
+  }
+  const subject3 = {
+    name: 'CSIT342-Industry Elective 3',
+    unitCount: 3
+  }
 
   return (
     <>
       <Header course={course}/>
-      <Content subject1={subject1} units1={unitCount1}
-               subject2={subject2} units2={unitCount2}
-               subject3={subject3} units3={unitCount3}/>
-      <Total units1={unitCount1} units2={unitCount2} units3={unitCount3}/>
+      <Content subject1={subject1.name} units1={subject1.unitCount}
+               subject2={subject2.name} units2={subject2.unitCount}
+               subject3={subject3.name} units3={subject3.unitCount}/>
+      <Total units1={subject1.unitCount} units2={subject2.unitCount} units3={subject3.unitCount}/>
     </>
   )
 }
