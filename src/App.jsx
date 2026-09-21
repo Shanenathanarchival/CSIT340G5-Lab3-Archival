@@ -12,16 +12,6 @@ const Header = (props) => {
   )
 }
 
-const Content = (props) => {
-  
-  return (
-    <div className="subject-row">
-      <p className="subject-name">{props.subject}</p>
-      <span className="subject-badge">{props.units} Units</span>
-    </div>
-  )
-}
-
 const Total = (props) => {
 
   return (
@@ -30,6 +20,31 @@ const Total = (props) => {
       <span className="total-count">
         {props.units1 + props.units2 + props.units3} Units
       </span>
+    </div>
+  )
+}
+
+const Parts = (props) => {
+
+  return (
+    <div>
+      <p className="subject-row">
+        Subject: {props.subject}
+        <p className="subject-badge">
+        Units: {props.units}
+        </p>
+      </p>
+    </div>
+  )
+}
+
+const Content = (props) => {
+
+  return (
+    <div className="">
+        <Parts subject={props.subject1} units={props.units1}/>
+        <Parts subject={props.subject2} units={props.units2}/>
+        <Parts subject={props.subject3} units={props.units3}/>
     </div>
   )
 }
@@ -45,9 +60,9 @@ const App = () => {
   return (
     <>
       <Header course={course}/>
-      <Content subject={subject1} units={unitCount1}/>
-      <Content subject={subject2} units={unitCount2}/>
-      <Content subject={subject3} units={unitCount3}/>
+      <Content subject1={subject1} units1={unitCount1}
+               subject2={subject2} units2={unitCount2}
+               subject3={subject3} units3={unitCount3}/>
       <Total units1={unitCount1} units2={unitCount2} units3={unitCount3}/>
     </>
   )
